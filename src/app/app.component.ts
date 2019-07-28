@@ -20,7 +20,7 @@ export class MyApp {
 		// Here you can do any higher level native things you might need.
 		statusBar.styleDefault();
 		/*Checking whether the App is running or not*/
-		// setInterval(()=> console.log("App is Running ================================="), 1000);
+		setInterval(()=> console.log("App is Running ================================="), 1000);
 		
 		if(platform.is('cordova')) {
 			/* Setting the Foreground and Background Mood*/
