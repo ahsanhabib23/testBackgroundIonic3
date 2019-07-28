@@ -25,8 +25,8 @@ export class MyApp {
 		if(platform.is('cordova')) {
 			/* Setting the Foreground and Background Mood*/
 			backgroundMode.setDefaults({
-			title: "DiaperSens is running...",
-			text: 'Continuously monitoring sensors'
+				title: "DiaperSens is running...",
+				text: 'Continuously monitoring sensors'
 			});
 			cordova.plugins.foregroundService.start('GPS Running', 'Background Service', 'myicon', 3, 10);
 			this.backgroundMode.enable();
