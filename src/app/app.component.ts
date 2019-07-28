@@ -24,12 +24,35 @@ export class MyApp {
 		
 		if(platform.is('cordova')) {
 			/* Setting the Foreground and Background Mood*/
-			backgroundMode.setDefaults({
+			// backgroundMode.setDefaults({
+			// 	title: "DiaperSens is running...",
+			// 	text: 'Continuously monitoring sensors'
+			// });
+			// cordova.plugins.foregroundService.start('GPS Running', 'Background Service', 'myicon', 3, 10);
+			// backgroundMode.enable();
+
+			cordova.plugins.backgroundMode.setDefaults({
 				title: "DiaperSens is running...",
-				text: 'Continuously monitoring sensors'
+				text: "Continuously monitoring sensors",
+				icon: 'icon', // this will look for icon.png in platforms/android/res/drawable|mipmap
+				color: "6E10A0", // hex format like 'F14F4D'
+				resume: true,
+				silent: false,
+				hidden: false,
+				bigText: false,
 			});
-			cordova.plugins.foregroundService.start('GPS Running', 'Background Service', 'myicon', 3, 10);
-			this.backgroundMode.enable();
+
+			cordova.plugins.backgroundMode.enable();
+            cordova.plugins.backgroundMode.onactivate = function () {
+				console.log("onactivate .....");
+                cordova.plugins.backgroundMode.disableWebViewOptimizations();
+            };
+            cordova.plugins.backgroundMode.ondeactivate = function () {
+				console.log("ondeactivate .....");
+                // alert('teste')
+            };
+
+            cordova.plugins.backgroundMode.disableBatteryOptimizations();
 		}
 		
 		splashScreen.hide();
